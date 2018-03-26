@@ -3,9 +3,9 @@
   height: 100%;
   top: 50%;
   left: 50%;
-#  position: block;
+  display: none;
 }
 
-.non_display {
-  display: none;
+.in_display {
+  display: block;
 }
