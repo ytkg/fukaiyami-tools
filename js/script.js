@@ -1,30 +1,29 @@
+function topView(dom) {
+  $(".in_display").addClass("non_display");
+  $(dom).removeClass("non_display");
+  $(".in_display").removeClass("in_display");
+  $(dom).addClass("in_display");
+} 
+
 $(function() {
   $(window).keydown(function(e) {
     var n = e.keyCode;
-    var numList = [65, 73, 85, 69, 79, 77, 78];
-    current = $.inArray(n, numList);
-    console.log(current)
-    if (current == -1) {
-      console.log("non")
-    } else if (current == 0) {
-      $(".in_display").removeClass("in_display");
-      $("#a_image").addClass("in_display");
-    } else if (current == 1) {
-      $(".in_display").removeClass("in_display");
-      $("#i_image").addClass("in_display");
-    } else if (current == 2) {
-      $(".in_display").removeClass("in_display");
-      $("#u_image").addClass("in_display");
-    } else if (current == 3) {
-      $(".in_display").removeClass("in_display");
-      $("#e_image").addClass("in_display");
-    } else if (current == 4) {
-      $(".in_display").removeClass("in_display");
-      $("#o_image").addClass("in_display");
-   } else if (current == 5 || current == 6) {
-      $(".in_display").removeClass("in_display");
-      $("#n_image").addClass("in_display");
-   }
+
+    var numHash = {65 : "#a_image",
+                   73 : "#i_image",
+                   85 : "#u_image",
+                   69 : "#e_image",
+                   79 : "#o_image",
+                   77 : "#n_image",
+                   78 : "#n_image",
+                   49 : "#ext_1",
+                   50 : "#ext_2",
+                   51 : "#ext_3",
+                   52 : "#ext_4"};
+
+    if( n in numHash ) {
+        topView(numHash[n])
+    }
     console.log(n);
   });
 });
