@@ -8,6 +8,7 @@ function topView(dom) {
 $(function() {
   $(window).keydown(function(e) {
     var n = e.keyCode;
+
     var numHash = {65 : "#a_image",
                    73 : "#i_image",
                    85 : "#u_image",
