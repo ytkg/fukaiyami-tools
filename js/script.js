@@ -48,7 +48,17 @@ jagarikoImageMap = {
 };
 
 imageMapIndex = 0; 
-imageMaps = [defaultImageMap, jagarikoImageMap];
+imageMaps = [
+  defaultImageMap,
+  jagarikoImageMap
+];
+
+function switchImageMap() {
+  imageMapIndex++;
+  if (imageMapIndex == imageMaps.length) {
+    imageMapIndex = 0;
+  }
+}
 
 function topView(className) {
   $(".in_display").removeClass("in_display");
@@ -58,16 +68,14 @@ function topView(className) {
 $(function() {
   $(window).keydown(function(e) {
     var n = e.keyCode;
-    if ( n == 32 ) {
-      imageMapIndex += 1;
-      if (imageMapIndex == imageMaps.length) {
-        imageMapIndex = 0;
-      }
-    } 
+    var className = imageMaps[imageMapIndex][n];
 
-    if( n in imageMaps[imageMapIndex] ) {
-      topView(imageMaps[imageMapIndex][n]);
+    if ( n == 32 ) {
+      switchImageMap();
+    } else if ( className != undefined ) {
+      topView(className);
     }
+
     console.log(n);
   });
 });
